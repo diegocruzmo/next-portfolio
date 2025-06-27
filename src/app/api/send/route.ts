@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import { EmailTemplate } from "@/components/EmailTemplate";
+import React from "react";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -11,7 +12,7 @@ export async function POST(req: Request) {
         from: "Portfolio Diego Cruz <onboarding@resend.dev>",
         to: ["diegocruzska@gmail.com"],
         subject: "Portfolio Diego Cruz",
-        react: EmailTemplate({
+        react: React.createElement(EmailTemplate, {
           name: dataForm.name,
           email: dataForm.email,
           message: dataForm.message,
